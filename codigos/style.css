@@ -11,6 +11,15 @@ body {
     color: #ffffff;
 }
 
+/* FOTO DA HOME: só a página que tem class="pagina-home" no body usa a foto */
+/* Arquivo da foto: img/torcida.jpg */
+.pagina-home {
+    background-image: url("img/torcida.jpg");
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+}
+
 a {
     color: #ffffff;
     text-decoration: none;
@@ -34,6 +43,7 @@ p {
     align-items: center;
     padding: 20px 60px;
     border-bottom: 1px solid #333333;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .logo {
@@ -41,6 +51,7 @@ p {
     font-size: 28px;
 }
 
+/* ===== MENU ===== */
 .menu {
     display: flex;
     align-items: center;
@@ -48,6 +59,13 @@ p {
 
 .menu a {
     margin-left: 30px;
+    transition: 0.3s;
+}
+
+/* Hover dos links do menu: ficam cinza e ganham sublinhado */
+.menu a:hover {
+    color: #999999;
+    text-decoration: underline;
 }
 
 /* ===== BOTÕES ===== */
@@ -60,6 +78,18 @@ p {
     font-size: 16px;
     border: none;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Hover do botão branco: fica cinza claro */
+.botao:hover {
+    background-color: #cccccc;
+}
+
+/* O botão Login fica dentro do menu, então precisa manter o texto preto e sem sublinhado */
+.menu .botao:hover {
+    color: #000000;
+    text-decoration: none;
 }
 
 .botao-vazio {
@@ -68,6 +98,13 @@ p {
     padding: 13px 30px;
     font-weight: bold;
     margin-left: 15px;
+    transition: 0.3s;
+}
+
+/* Hover do botão vazio: preenche de branco e o texto fica preto */
+.botao-vazio:hover {
+    background-color: #ffffff;
+    color: #000000;
 }
 
 .botao-largo {
@@ -76,22 +113,20 @@ p {
 }
 
 /* ===== HOME: CONTAINER PRINCIPAL ===== */
-/* Para usar sua foto: salve em img/torcida.jpg */
+/* A foto vem do body (.pagina-home), aqui só ficam o texto e a camada escura */
 .container-principal {
-    background-color: #222222;
-    background-image: url("../img/torcida.jpg");
-    background-size: cover;
-    background-position: center;
+    padding: 0;
 }
 
-/* Camada preta transparente por cima da foto, para o texto ficar legível */
+/* Camada preta transparente por cima da foto. Quanto menor o último número, mais a foto aparece */
 .container-escuro {
-    background-color: rgba(0, 0, 0, 0.65);
-    padding: 120px 60px;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 160px 60px;
 }
 
 .container-principal h1 {
     font-size: 90px;
+    text-shadow: 2px 2px 8px #000000;
 }
 
 .container-principal p {
@@ -99,25 +134,30 @@ p {
     width: 600px;
     color: #ffffff;
     margin-bottom: 30px;
+    text-shadow: 1px 1px 6px #000000;
 }
 
 /* ===== HOME: CONTAINER DA FRASE ===== */
+/* Sem faixa branca: a foto aparece por trás, com a mesma camada escura do início */
 .container-frase {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
     text-align: center;
-    padding: 40px;
+    padding: 60px 40px;
     font-family: Impact, sans-serif;
-    font-size: 36px;
+    font-size: 40px;
+    text-shadow: 2px 2px 8px #000000;
 }
 
 /* ===== HOME: SEÇÕES ===== */
+/* Fundo preto transparente: deixa a foto aparecer por trás */
 .secao {
     padding: 80px 60px;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .secao-escura {
-    background-color: #1c1c1c;
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
 .subtitulo {
@@ -131,7 +171,7 @@ p {
 
 .card {
     flex: 1;
-    border: 1px solid #333333;
+    border: 1px solid #555555;
     padding: 30px;
     margin: 10px;
 }
@@ -169,6 +209,7 @@ p {
     padding: 25px 60px;
     border-top: 1px solid #333333;
     color: #999999;
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
 /* ===== FORMULÁRIOS (login e cadastro) ===== */
@@ -194,12 +235,18 @@ label {
     display: flex;
 }
 
+/* Lado esquerdo do login: só cor de fundo, sem foto */
 .painel-esquerdo {
+    flex: 1;
+    display: flex;
+    background-color: #2a1a10;
+}
+
+.painel-escuro {
     flex: 1;
     display: flex;
     align-items: flex-end;
     padding: 60px;
-    background-color: #2a1a10;
 }
 
 .painel-esquerdo h2 {
