@@ -1,0 +1,337 @@
+/* ===== GERAL ===== */
+/* Faz o padding e a borda ficarem DENTRO da largura da caixa */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #111111;
+    color: #ffffff;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-family: Impact, sans-serif;
+    font-weight: normal;
+}
+
+p {
+    line-height: 1.5;
+    color: #cccccc;
+}
+
+/* ===== CABEÇALHO (header) ===== */
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    border-bottom: 1px solid #333333;
+}
+
+.logo {
+    font-family: Impact, sans-serif;
+    font-size: 28px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu a {
+    margin-left: 30px;
+}
+
+/* ===== BOTÕES ===== */
+.botao {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 14px 30px;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.botao-vazio {
+    display: inline-block;
+    border: 1px solid #ffffff;
+    padding: 13px 30px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.botao-largo {
+    width: 100%;
+    margin-top: 25px;
+}
+
+/* ===== HOME: CONTAINER PRINCIPAL ===== */
+/* Para usar sua foto: salve em img/torcida.jpg */
+.container-principal {
+    background-color: #222222;
+    background-image: url("../img/torcida.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+/* Camada preta transparente por cima da foto, para o texto ficar legível */
+.container-escuro {
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 120px 60px;
+}
+
+.container-principal h1 {
+    font-size: 90px;
+}
+
+.container-principal p {
+    font-size: 20px;
+    width: 600px;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+/* ===== HOME: CONTAINER DA FRASE ===== */
+.container-frase {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 40px;
+    font-family: Impact, sans-serif;
+    font-size: 36px;
+}
+
+/* ===== HOME: SEÇÕES ===== */
+.secao {
+    padding: 80px 60px;
+}
+
+.secao-escura {
+    background-color: #1c1c1c;
+}
+
+.subtitulo {
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+
+.container-cards {
+    display: flex;
+}
+
+.card {
+    flex: 1;
+    border: 1px solid #333333;
+    padding: 30px;
+    margin: 10px;
+}
+
+.card h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.foto {
+    height: 140px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #222222;
+    border: 1px solid #333333;
+    color: #999999;
+    text-align: center;
+}
+
+.container-contador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ffffff;
+    padding: 25px 30px;
+    margin: 40px 10px 0 10px;
+}
+
+.container-contador h3 {
+    font-size: 32px;
+}
+
+/* ===== RODAPÉ ===== */
+.rodape {
+    padding: 25px 60px;
+    border-top: 1px solid #333333;
+    color: #999999;
+}
+
+/* ===== FORMULÁRIOS (login e cadastro) ===== */
+label {
+    display: block;
+    margin-top: 15px;
+    color: #aaaaaa;
+}
+
+.campo {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-top: 6px;
+    background-color: #222222;
+    color: #ffffff;
+    border: 1px solid #444444;
+    font-size: 16px;
+}
+
+/* ===== LOGIN ===== */
+.login-conteudo {
+    display: flex;
+}
+
+.painel-esquerdo {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    padding: 60px;
+    background-color: #2a1a10;
+}
+
+.painel-esquerdo h2 {
+    font-size: 60px;
+}
+
+.painel-direito {
+    flex: 1;
+    padding: 50px 60px;
+}
+
+.painel-direito h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.opcoes-tour {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.opcao {
+    flex: 1;
+    margin-top: 0;
+    margin-right: 15px;
+    padding: 20px;
+    border: 1px solid #444444;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.opcao p {
+    margin: 8px 0 0 0;
+    font-size: 15px;
+}
+
+.rodape-cadastro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #333333;
+}
+
+.rodape-cadastro p {
+    margin: 0;
+}
+
+/* ===== CADASTRO ===== */
+.cadastro-conteudo {
+    width: 560px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.cadastro-conteudo h1 {
+    font-size: 56px;
+    margin-bottom: 20px;
+}
+
+.chip-tour {
+    display: inline-block;
+    border: 1px solid #ffffff;
+    padding: 8px 16px;
+}
+
+.link-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link-login a {
+    text-decoration: underline;
+}
+
+/* ===== DASHBOARD ===== */
+.saudacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 60px 20px 60px;
+}
+
+.saudacao h1 {
+    font-size: 60px;
+}
+
+.kpis {
+    display: flex;
+    padding: 0 50px;
+}
+
+.kpi {
+    flex: 1;
+    border: 1px solid #333333;
+    padding: 25px;
+    margin: 10px;
+}
+
+.kpi p {
+    margin: 0;
+    color: #aaaaaa;
+}
+
+.kpi h2 {
+    font-size: 56px;
+    margin-top: 10px;
+}
+
+.kpi-destaque {
+    background-color: #ffffff;
+}
+
+.kpi-destaque p,
+.kpi-destaque h2 {
+    color: #000000;
+}
+
+.graficos {
+    display: flex;
+    padding: 0 50px 50px 50px;
+}
+
+.grafico {
+    flex: 1;
+    border: 1px solid #333333;
+    padding: 25px;
+    margin: 10px;
+}
+
+.grafico h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
