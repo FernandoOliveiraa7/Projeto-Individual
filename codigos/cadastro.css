@@ -1,0 +1,204 @@
+/* ===== GERAL ===== */
+/* Faz o padding e a borda ficarem DENTRO da largura da caixa */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #111111;
+    color: #ffffff;
+}
+
+/* FOTO DE FUNDO DO CADASTRO (arquivo: img/torcida.jpg) */
+.pagina-cadastro {
+    background-image: url("img/torcida.jpg");
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+h1, h2 {
+    margin: 0;
+    font-family: Impact, sans-serif;
+    font-weight: normal;
+}
+
+/* ===== CABEÇALHO ===== */
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    border-bottom: 1px solid #333333;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Logo: escudo + nome lado a lado */
+.logo {
+    display: flex;
+    align-items: center;
+    font-family: Impact, sans-serif;
+    font-size: 28px;
+}
+
+/* Escudo: só a altura, a largura se ajusta sozinha */
+.escudo {
+    height: 50px;
+    margin-right: 15px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu a {
+    margin-left: 30px;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #999999;
+    text-decoration: underline;
+}
+
+/* ===== CADASTRO: CAIXA COM DOIS LADOS ===== */
+/* Centraliza a caixa no meio da página */
+.container-cadastro {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+/* A caixa é um flex: os dois lados ficam um ao lado do outro */
+.caixa-cadastro {
+    display: flex;
+    width: 960px;
+    min-height: 620px;
+    background-color: #ffffff;
+}
+
+/* ----- Lado do painel (fundo preto) ----- */
+.lado-painel {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    background-color: #111111;
+}
+
+.lado-painel h2 {
+    font-size: 44px;
+    color: #ffffff;
+}
+
+.lado-painel p {
+    color: #cccccc;
+    line-height: 1.5;
+    margin: 18px 0 30px 0;
+}
+
+.botao-contorno {
+    border: 2px solid #ffffff;
+    border-radius: 30px;
+    padding: 12px 44px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+/* Hover: o botão preenche de branco e o texto fica preto */
+.botao-contorno:hover {
+    background-color: #ffffff;
+    color: #111111;
+}
+
+/* ----- Lado do formulário (fundo branco) ----- */
+.lado-formulario {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.conteudo-formulario {
+    width: 360px;
+}
+
+.lado-formulario h1 {
+    font-size: 46px;
+    color: #111111;
+    text-align: center;
+}
+
+.subtitulo-form {
+    text-align: center;
+    color: #666666;
+    margin: 8px 0 10px 0;
+}
+
+label {
+    display: block;
+    margin-top: 14px;
+    color: #555555;
+    font-size: 14px;
+}
+
+.campo {
+    display: block;
+    width: 100%;
+    padding: 14px 16px;
+    margin-top: 6px;
+    background-color: #eeeeee;
+    color: #111111;
+    border: none;
+    font-size: 15px;
+}
+
+.area-botao {
+    text-align: center;
+    margin-top: 28px;
+}
+
+.botao-preto {
+    background-color: #111111;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 13px 54px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao-preto:hover {
+    background-color: #444444;
+}
+
+.mensagem {
+    margin-top: 16px;
+    text-align: center;
+    color: #333333;
+    font-weight: bold;
+}
+
+/* ===== RODAPÉ ===== */
+.rodape {
+    padding: 25px 60px;
+    border-top: 1px solid #333333;
+    color: #999999;
+    background-color: rgba(0, 0, 0, 0.85);
+}

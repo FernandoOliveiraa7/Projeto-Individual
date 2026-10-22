@@ -10,9 +10,13 @@
 
     <!-- CABEÇALHO -->
     <header class="cabecalho">
-        <div class="logo">Nasci Corinthiano</div>
+        <div class="logo">
+            <img src="img/corinthians.png" alt="Escudo do Corinthians" class="escudo">
+            <span>Nasci Corinthiano</span>
+        </div>
         <nav class="menu">
             <a href="#historia">Minha história</a>
+            <a href="#pesquisa">Pesquisa</a>
             <a href="#povo">O time do povo</a>
             <a href="#valores">Valores</a>
             <a href="#tour">Tour</a>
@@ -26,7 +30,7 @@
         <section class="container-principal">
             <div class="container-escuro">
                 <h1>Nasci<br>corinthiano.</h1>
-                <p>A história de quem recebeu o Corinthians de herança, do tio-avô, e descobriu que ele já estava dentro desde o primeiro dia.</p>
+                <p>A história de quem recebeu o Corinthians de herança, do tio-avô, e descobriu que ele já estava dentro do coração desde o primeiro dia.</p>
                 <a href="#historia" class="botao">Conheça minha história</a>
                 <a href="login.html" class="botao-vazio">Agende seu tour</a>
             </div>
@@ -54,8 +58,29 @@
                 </div>
             </div>
             <div class="container-contador">
-                <h3>Há [X] anos sou corinthiano.</h3>
+                <h3>Há 19 anos sou corinthiano.</h3>
                 <p>Desde o primeiro dia da minha vida.</p>
+            </div>
+        </section>
+
+        <!-- PESQUISA: de quem você herdou o Corinthians? -->
+        <section class="secao secao-escura" id="pesquisa">
+            <h2 class="subtitulo">E você? De quem herdou o Corinthians?</h2>
+            <div class="container-pesquisa">
+                <label>Quem te fez corinthiano?
+                    <select id="select_heranca" class="campo">
+                        <option value="">Escolha uma opção</option>
+                        <option value="Pai">Pai</option>
+                        <option value="Mãe">Mãe</option>
+                        <option value="Avô/Avó">Avô/Avó</option>
+                        <option value="Tio/Tia">Tio/Tia</option>
+                        <option value="Outro familiar">Outro familiar</option>
+                        <option value="Amigo">Amigo</option>
+                        <option value="Nasci assim">Nasci assim</option>
+                    </select>
+                </label>
+                <button class="botao botao-largo" onclick="enviarHeranca()">Enviar minha resposta</button>
+                <p id="mensagem_pesquisa" class="mensagem"></p>
             </div>
         </section>
 
@@ -122,4 +147,18 @@
     </footer>
 
 </body>
+
+<script>
+    function enviarHeranca() {
+        var escolha = select_heranca.value;
+
+        if (escolha == "") {
+            mensagem_pesquisa.innerHTML = "Escolha uma opção antes de enviar.";
+        } else {
+            mensagem_pesquisa.innerHTML = "Obrigado! Sua resposta foi registrada.";
+            // AQUI entra o envio para a API, quando a gente ligar o banco
+        }
+    }
+</script>
+
 </html>
