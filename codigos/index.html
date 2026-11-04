@@ -172,19 +172,40 @@
     <footer class="rodape">
         Projeto acadêmico. Feito por um corinthiano de nascença.
     </footer>
-
-    <script>
-        function enviarTour() {
-            var escolha = select_tour.value;
-
-            if (escolha == "") {
-                mensagem_tour.innerHTML = "Escolha uma opção antes de enviar.";
-            } else {
-                mensagem_tour.innerHTML = "Obrigado! Sua resposta foi registrada.";
-                // AQUI vai entrar o envio para a API, quando ligar o banco
+<script>
+    
+        function cadastrar() {
+        let nome = input_nome.value;
+        let email = input_email.value;
+        let senha = input_senha.value;
+        let confirmacao = input_confirmacao.value;
+        let heranca = select_heranca.value;
+    
+        let dados = [nome, email, senha, confirmacao, heranca];
+        let vazio = false;
+    
+        for (let i = 0; i < dados.length; i++) {
+            if (dados[i] == "") {
+                vazio = true;
             }
         }
-    </script>
+    
+        if (vazio == true) {
+            mensagem_cadastro.innerHTML = "Preencha todos os campos.";
+        } else if (nome.length < 3) {
+            mensagem_cadastro.innerHTML = "O nome precisa ter pelo menos 3 letras.";
+        } else if (email.indexOf("@") == -1) {
+            mensagem_cadastro.innerHTML = "Digite um e-mail válido.";
+        } else if (senha.length < 6) {
+            mensagem_cadastro.innerHTML = "A senha precisa ter pelo menos 6 caracteres.";
+        } else if (senha != confirmacao) {
+            mensagem_cadastro.innerHTML = "As senhas não são iguais.";
+        } else {
+            mensagem_cadastro.innerHTML = "Cadastro realizado! Agora é só fazer o login.";
+            // AQUI entra o cadastro na API, quando a gente ligar o banco
+        }
+    }
+</script>
 
 </body>
 </html>
