@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -29,7 +30,7 @@
                 <a href="login.html" class="botao-contorno">ENTRAR</a>
             </section>
 
-            <!-- Lado direito: formulário (fundo branco) -->
+            <!-- Lado direito: formulário -->
             <section class="lado-formulario">
                 <div class="conteudo-formulario">
                     <h1>Crie sua conta</h1>
@@ -47,9 +48,22 @@
                     <label for="input_confirmacao">Confirme a senha</label>
                     <input type="password" id="input_confirmacao" class="campo" placeholder="Repita a senha">
 
+                    <label for="select_heranca">Quem te fez corinthiano?</label>
+                    <select id="select_heranca" class="campo">
+                        <option value="">Escolha uma opção</option>
+                        <option value="Pai">Pai</option>
+                        <option value="Mãe">Mãe</option>
+                        <option value="Avô/Avó">Avô/Avó</option>
+                        <option value="Tio/Tia">Tio/Tia</option>
+                        <option value="Outro familiar">Outro familiar</option>
+                        <option value="Amigo">Amigo</option>
+                        <option value="Nasci assim">Nasci assim</option>
+                    </select>
+
                     <div class="area-botao">
                         <button class="botao-preto" onclick="cadastrar()">CADASTRAR</button>
                     </div>
+
                     <p id="mensagem_cadastro" class="mensagem"></p>
                 </div>
             </section>
@@ -70,8 +84,9 @@
         var email = input_email.value;
         var senha = input_senha.value;
         var confirmacao = input_confirmacao.value;
+        var heranca = select_heranca.value;
 
-        if (nome == "" || email == "" || senha == "" || confirmacao == "") {
+        if (nome == "" || email == "" || senha == "" || confirmacao == "" || heranca == "") {
             mensagem_cadastro.innerHTML = "Preencha todos os campos.";
         } else if (nome.length < 3) {
             mensagem_cadastro.innerHTML = "O nome precisa ter pelo menos 3 letras.";

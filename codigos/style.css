@@ -1,5 +1,5 @@
+
 /* ===== GERAL ===== */
-/* Faz o padding e a borda ficarem DENTRO da largura da caixa */
 * {
     box-sizing: border-box;
 }
@@ -11,8 +11,7 @@ body {
     color: #ffffff;
 }
 
-/* FOTO DA HOME: só a página que tem class="pagina-home" no body usa a foto */
-/* Arquivo da foto: img/torcida.jpg */
+/* FOTO DA HOME */
 .pagina-home {
     background-image: url("img/torcida.jpg");
     background-size: cover;
@@ -36,7 +35,7 @@ p {
     color: #cccccc;
 }
 
-/* ===== CABEÇALHO (header) ===== */
+/* ===== CABEÇALHO ===== */
 .cabecalho {
     display: flex;
     justify-content: space-between;
@@ -46,7 +45,6 @@ p {
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-/* Logo: escudo + nome lado a lado */
 .logo {
     display: flex;
     align-items: center;
@@ -54,7 +52,6 @@ p {
     font-size: 28px;
 }
 
-/* Escudo: só a altura, a largura se ajusta sozinha */
 .escudo {
     height: 70px;
     margin-right: 15px;
@@ -71,7 +68,6 @@ p {
     transition: 0.3s;
 }
 
-/* Hover dos links do menu: ficam cinza e ganham sublinhado */
 .menu a:hover {
     color: #999999;
     text-decoration: underline;
@@ -90,12 +86,10 @@ p {
     transition: 0.3s;
 }
 
-/* Hover do botão branco: fica cinza claro */
 .botao:hover {
     background-color: #cccccc;
 }
 
-/* O botão Login fica dentro do menu, então precisa manter o texto preto e sem sublinhado */
 .menu .botao:hover {
     color: #000000;
     text-decoration: none;
@@ -110,7 +104,6 @@ p {
     transition: 0.3s;
 }
 
-/* Hover do botão vazio: preenche de branco e o texto fica preto */
 .botao-vazio:hover {
     background-color: #ffffff;
     color: #000000;
@@ -122,12 +115,10 @@ p {
 }
 
 /* ===== HOME: CONTAINER PRINCIPAL ===== */
-/* A foto vem do body (.pagina-home), aqui só ficam o texto e a camada escura */
 .container-principal {
     padding: 0;
 }
 
-/* Camada preta transparente por cima da foto. Quanto menor o último número, mais a foto aparece */
 .container-escuro {
     background-color: rgba(0, 0, 0, 0.3);
     padding: 160px 60px;
@@ -146,8 +137,7 @@ p {
     text-shadow: 1px 1px 6px #000000;
 }
 
-/* ===== HOME: CONTAINER DA FRASE ===== */
-/* Sem faixa branca: a foto aparece por trás, com a mesma camada escura do início */
+/* ===== CONTAINER DA FRASE ===== */
 .container-frase {
     background-color: rgba(0, 0, 0, 0.3);
     color: #ffffff;
@@ -158,8 +148,7 @@ p {
     text-shadow: 2px 2px 8px #000000;
 }
 
-/* ===== HOME: SEÇÕES ===== */
-/* Fundo preto transparente: deixa a foto aparecer por trás */
+/* ===== SEÇÕES ===== */
 .secao {
     padding: 80px 60px;
     background-color: rgba(0, 0, 0, 0.7);
@@ -200,6 +189,7 @@ p {
     text-align: center;
 }
 
+/* ===== CONTADOR ===== */
 .container-contador {
     display: flex;
     justify-content: space-between;
@@ -213,7 +203,40 @@ p {
     font-size: 32px;
 }
 
-/* ===== HOME: PESQUISA ===== */
+/* ===== LOCAIS DO TOUR ===== */
+.container-locais {
+    display: flex;
+    gap: 30px;
+}
+
+.local-card {
+    flex: 1;
+    border: 1px solid #555555;
+    padding: 30px;
+}
+
+.local-card h3 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.local-card p {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.area-fotos {
+    display: flex;
+    gap: 10px;
+}
+
+.area-fotos img {
+    width: 50%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* ===== PESQUISA DO TOUR ===== */
 .container-pesquisa {
     width: 500px;
 }
@@ -307,4 +330,68 @@ label {
 .grafico h3 {
     font-size: 24px;
     margin-bottom: 20px;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 800px) {
+    .cabecalho {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .menu a {
+        margin-left: 0;
+    }
+
+    .container-escuro {
+        padding: 100px 30px;
+    }
+
+    .container-principal h1 {
+        font-size: 60px;
+    }
+
+    .container-principal p {
+        width: 100%;
+    }
+
+    .secao {
+        padding: 50px 25px;
+    }
+
+    .subtitulo {
+        font-size: 36px;
+    }
+
+    .container-cards,
+    .container-locais,
+    .graficos,
+    .kpis {
+        flex-direction: column;
+    }
+
+    .container-contador {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .container-pesquisa {
+        width: 100%;
+    }
+
+    .area-fotos img {
+        height: 160px;
+    }
+
+    .container-frase {
+        font-size: 30px;
+    }
 }
