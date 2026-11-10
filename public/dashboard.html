@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Nasci Corinthiano</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js por CDN. Se o projeto em grupo usa a pasta local, troque pelo mesmo caminho -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+        <div class="logo">
+            <img src="img/corinthians.png" alt="Escudo do Corinthians" class="escudo">
+            <span>Nasci Corinthiano</span>
+        </div>
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="#" class="botao" onclick="sair()">Sair</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- SAUDAÇÃO -->
+        <section class="saudacao">
+            <h1>Fala, <span id="nome_usuario">Fiel</span>!</h1>
+        </section>
+
+        <!-- KPIs -->
+        <section class="kpis">
+            <div class="kpi">
+                <p>Total de respostas</p>
+                <h2 id="kpi_total">0</h2>
+            </div>
+
+            <div class="kpi kpi-destaque">
+                <p>Quem mais tornou corinthiano</p>
+                <h2 id="kpi_heranca">-</h2>
+            </div>
+
+            <div class="kpi">
+                <p>Tour mais escolhido</p>
+                <h2 id="kpi_tour">-</h2>
+            </div>
+        </section>
+
+        <!-- GRÁFICOS -->
+        <section class="graficos">
+            <div class="grafico">
+                <h3>Quem tornou você corinthiano?</h3>
+                <canvas id="grafico_heranca"></canvas>
+            </div>
+
+            <div class="grafico">
+                <h3>Qual tour a Fiel prefere?</h3>
+                <canvas id="grafico_tour"></canvas>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        Projeto acadêmico. Feito por um corinthiano de nascença.
+    </footer>
+
+<script>
+    // ===== CONFIGURAÇÃO =====
+    // true = dados de teste | false = dados reais da API
+    let usarDadosDeExemplo = false;
+
+        let rotaDashboard = "/usuarios/dashboard";
+
+    // ===== SESSÃO (ajuste os nomes conforme o seu login) =====
+    if (sessionStorage.ID_USUARIO == undefined) {
+        window.location = "login.html";
+    }
+
+    nome_usuario.innerHTML = sessionStorage.NOME_USUARIO || "Fiel";
+
+    function sair() {
+        sessionStorage.clear();
+        window.location = "index.html";
+    }
+
+    // ===== DADOS DE EXEMPLO =====
+    // Formato que a API deve devolver:
+    // { heranca: [{ nome: "Pai", total: 5 }, ...], tour: [{ nome: "Neo Química Arena", total: 7 }, ...] }
+    let dadosExemplo = {
+        heranca: [
+            { nome: "Pai", total: 12 },
+            { nome: "Mãe", total: 3 },
+            { nome: "Avô", total: 6 },
+            { nome: "Avó", total: 2 },
+            { nome: "Tio", total: 5 },
+            { nome: "Tia", total: 1 }
+        ],
+        tour: [
+            { nome: "Parque São Jorge", total: 11 },
+            { nome: "Neo Química Arena", total: 18 }
+        ]
+    };
+
+    // ===== BUSCAR DADOS =====
+    function carregarDashboard() {
+        if (usarDadosDeExemplo) {
+            montarDashboard(dadosExemplo);
+            return;
+        }
+
+        fetch(rotaDashboard)
+            .then(function (resposta) {
+                if (!resposta.ok) {
+                    throw new Error("Erro ao buscar os dados");
+                }
+                return resposta.json();
+            })
+            .then(function (dados) {
+                montarDashboard(dados);
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                kpi_heranca.innerHTML = "Erro";
+                kpi_tour.innerHTML = "Erro";
+            });
+    }
+
+    // ===== ACHAR O MAIOR VALOR =====
+    function acharMaior(lista) {
+        if (lista.length == 0) {
+            return { nome: "-", total: 0 };
+        }
+        let maior = lista[0];
+        for (let i = 1; i < lista.length; i++) {
+            if (lista[i].total > maior.total) {
+                maior = lista[i];
+            }
+        }
+        return maior;
+    }
+
+    // ===== MONTAR KPIs E GRÁFICOS =====
+    function montarDashboard(dados) {
+        let totalRespostas = 0;
+        for (let i = 0; i < dados.heranca.length; i++) {
+            totalRespostas += dados.heranca[i].total;
+        }
+
+        kpi_total.innerHTML = totalRespostas;
+        kpi_heranca.innerHTML = acharMaior(dados.heranca).nome;
+        kpi_tour.innerHTML = acharMaior(dados.tour).nome;
+
+        let nomesHeranca = [];
+        let totaisHeranca = [];
+        for (let i = 0; i < dados.heranca.length; i++) {
+            nomesHeranca.push(dados.heranca[i].nome);
+            totaisHeranca.push(dados.heranca[i].total);
+        }
+
+        let nomesTour = [];
+        let totaisTour = [];
+        for (let i = 0; i < dados.tour.length; i++) {
+            nomesTour.push(dados.tour[i].nome);
+            totaisTour.push(dados.tour[i].total);
+        }
+
+        // Cor do texto e das linhas combinando com o fundo escuro
+        Chart.defaults.color = "#cccccc";
+        Chart.defaults.borderColor = "#333333";
+
+        // GRÁFICO 1: rosca com quem tornou corinthiano
+        new Chart(grafico_heranca, {
+            type: "doughnut",
+            data: {
+                labels: nomesHeranca,
+                datasets: [{
+                    data: totaisHeranca,
+                    backgroundColor: ["#ffffff", "#e0e0e0", "#bdbdbd", "#9e9e9e", "#757575", "#5f5f5f", "#404040"],
+                    borderColor: "#111111",
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: "bottom" }
+                }
+            }
+        });
+
+        // GRÁFICO 2: barras com o tour preferido
+        new Chart(grafico_tour, {
+            type: "bar",
+            data: {
+                labels: nomesTour,
+                datasets: [{
+                    label: "Votos",
+                    data: totaisTour,
+                    backgroundColor: ["#ffffff", "#9e9e9e"]
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { stepSize: 1 }
+                    }
+                }
+            }
+        });
+    }
+
+    carregarDashboard();
+</script>
+
+</body>
+</html>

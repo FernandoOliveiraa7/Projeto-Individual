@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Nasci Corinthiano</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body class="pagina-login">
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+        <div class="logo">
+            <img src="img/corinthians.png" alt="Escudo do Corinthians" class="escudo">
+            <span>Nasci Corinthiano</span>
+        </div>
+        <nav class="menu">
+            <a href="index.html">Voltar para a Home</a>
+        </nav>
+    </header>
+
+    <main class="container-login">
+        <div class="caixa-login">
+
+            <!-- Lado esquerdo: formulário (fundo branco) -->
+            <section class="lado-formulario">
+                <div class="conteudo-formulario">
+                    <h1>Entre na sua conta</h1>
+                    <p class="subtitulo-form">Faça login para agendar o seu tour.</p>
+
+                    <label for="input_email">E-mail</label>
+                    <input type="text" id="input_email" class="campo" placeholder="voce@email.com">
+
+                    <label for="input_senha">Senha</label>
+                    <input type="password" id="input_senha" class="campo" placeholder="Sua senha">
+
+                    <div class="area-botao">
+                        <button class="botao-preto" onclick="entrar()">ENTRAR</button>
+                    </div>
+                    <p id="mensagem_login" class="mensagem"></p>
+                </div>
+            </section>
+
+            <!-- Lado direito: painel preto -->
+            <section class="lado-painel">
+                <h2>Primeira vez aqui?</h2>
+                <p>Crie a sua conta e entre para a Fiel. Depois é só agendar o tour.</p>
+                <a href="cadastro.html" class="botao-contorno">CADASTRAR</a>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        Projeto acadêmico. Feito por um corinthiano de nascença.
+    </footer>
+
+<script>
+    function entrar() {
+        var email = input_email.value;
+        var senha = input_senha.value;
+
+        if (email == "" || senha == "") {
+            mensagem_login.innerHTML = "Preencha o e-mail e a senha.";
+        } else if (email.indexOf("@") == -1) {
+            mensagem_login.innerHTML = "Digite um e-mail válido.";
+        } else {
+            mensagem_login.innerHTML = "Entrando...";
+
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: email,
+                    senhaServer: senha
+                })
+            })
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        resposta.json().then(function (json) {
+                            sessionStorage.ID_USUARIO = json.id;
+                            sessionStorage.NOME_USUARIO = json.nome;
+                            sessionStorage.EMAIL_USUARIO = json.email;
+
+                            setTimeout(function () {
+                                window.location = "dashboard.html";
+                            }, 1000);
+                        });
+                    } else {
+                        mensagem_login.innerHTML = "E-mail e/ou senha inválido(s).";
+                    }
+                })
+                .catch(function (erro) {
+                    console.log(erro);
+                    mensagem_login.innerHTML = "Erro ao conectar com o servidor.";
+                });
+        }
+    }
+</script>
+
+</body>
+</html>

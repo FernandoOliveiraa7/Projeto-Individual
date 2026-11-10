@@ -1,0 +1,397 @@
+
+/* ===== GERAL ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #111111;
+    color: #ffffff;
+}
+
+/* FOTO DA HOME */
+.pagina-home {
+    background-image: url("img/torcida.jpg");
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-family: Impact, sans-serif;
+    font-weight: normal;
+}
+
+p {
+    line-height: 1.5;
+    color: #cccccc;
+}
+
+/* ===== CABEÇALHO ===== */
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    border-bottom: 1px solid #333333;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-family: Impact, sans-serif;
+    font-size: 28px;
+}
+
+.escudo {
+    height: 70px;
+    margin-right: 15px;
+}
+
+/* ===== MENU ===== */
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu a {
+    margin-left: 30px;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #999999;
+    text-decoration: underline;
+}
+
+/* ===== BOTÕES ===== */
+.botao {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 14px 30px;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao:hover {
+    background-color: #cccccc;
+}
+
+.menu .botao:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+.botao-vazio {
+    display: inline-block;
+    border: 1px solid #ffffff;
+    padding: 13px 30px;
+    font-weight: bold;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.botao-vazio:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.botao-largo {
+    width: 100%;
+    margin-top: 25px;
+}
+
+/* ===== HOME: CONTAINER PRINCIPAL ===== */
+.container-principal {
+    padding: 0;
+}
+
+.container-escuro {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 160px 60px;
+}
+
+.container-principal h1 {
+    font-size: 90px;
+    text-shadow: 2px 2px 8px #000000;
+}
+
+.container-principal p {
+    font-size: 20px;
+    width: 600px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 6px #000000;
+}
+
+/* ===== CONTAINER DA FRASE ===== */
+.container-frase {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    text-align: center;
+    padding: 60px 40px;
+    font-family: Impact, sans-serif;
+    font-size: 40px;
+    text-shadow: 2px 2px 8px #000000;
+}
+
+/* ===== SEÇÕES ===== */
+.secao {
+    padding: 80px 60px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.secao-escura {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.subtitulo {
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+
+.container-cards {
+    display: flex;
+}
+
+.card {
+    flex: 1;
+    border: 1px solid #555555;
+    padding: 30px;
+    margin: 10px;
+}
+
+.card h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.foto {
+    height: 140px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #222222;
+    border: 1px solid #333333;
+    color: #999999;
+    text-align: center;
+}
+
+/* ===== CONTADOR ===== */
+.container-contador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ffffff;
+    padding: 25px 30px;
+    margin: 40px 10px 0 10px;
+}
+
+.container-contador h3 {
+    font-size: 32px;
+}
+
+/* ===== LOCAIS DO TOUR ===== */
+.container-locais {
+    display: flex;
+    gap: 30px;
+}
+
+.local-card {
+    flex: 1;
+    border: 1px solid #555555;
+    padding: 30px;
+}
+
+.local-card h3 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.local-card p {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.area-fotos {
+    display: flex;
+    gap: 10px;
+}
+
+.area-fotos img {
+    width: 50%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* ===== PESQUISA DO TOUR ===== */
+.container-pesquisa {
+    width: 500px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    color: #aaaaaa;
+}
+
+.campo {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-top: 6px;
+    background-color: #222222;
+    color: #ffffff;
+    border: 1px solid #444444;
+    font-size: 16px;
+}
+
+.mensagem {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* ===== RODAPÉ ===== */
+.rodape {
+    padding: 25px 60px;
+    border-top: 1px solid #333333;
+    color: #999999;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* ===== DASHBOARD ===== */
+.saudacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 60px 20px 60px;
+}
+
+.saudacao h1 {
+    font-size: 60px;
+}
+
+.kpis {
+    display: flex;
+    padding: 0 50px;
+}
+
+.kpi {
+    flex: 1;
+    border: 1px solid #333333;
+    padding: 25px;
+    margin: 10px;
+}
+
+.kpi p {
+    margin: 0;
+    color: #aaaaaa;
+}
+
+.kpi h2 {
+    font-size: 56px;
+    margin-top: 10px;
+}
+
+.kpi-destaque {
+    background-color: #ffffff;
+}
+
+.kpi-destaque p,
+.kpi-destaque h2 {
+    color: #000000;
+}
+
+.graficos {
+    display: flex;
+    padding: 0 50px 50px 50px;
+}
+
+.grafico {
+    flex: 1;
+    border: 1px solid #333333;
+    padding: 25px;
+    margin: 10px;
+}
+
+.grafico h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 800px) {
+    .cabecalho {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .menu a {
+        margin-left: 0;
+    }
+
+    .container-escuro {
+        padding: 100px 30px;
+    }
+
+    .container-principal h1 {
+        font-size: 60px;
+    }
+
+    .container-principal p {
+        width: 100%;
+    }
+
+    .secao {
+        padding: 50px 25px;
+    }
+
+    .subtitulo {
+        font-size: 36px;
+    }
+
+    .container-cards,
+    .container-locais,
+    .graficos,
+    .kpis {
+        flex-direction: column;
+    }
+
+    .container-contador {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .container-pesquisa {
+        width: 100%;
+    }
+
+    .area-fotos img {
+        height: 160px;
+    }
+
+    .container-frase {
+        font-size: 30px;
+    }
+}
