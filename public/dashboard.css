@@ -1,0 +1,94 @@
+/* ===== DASHBOARD: ajustes para caber numa tela de notebook ===== */
+/* Este arquivo só é usado na dashboard, e vem depois do style.css */
+
+/* Faz o rodapé ficar sempre no fim da janela:
+   o body vira uma coluna e o main ocupa todo o espaço que sobrar */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+/* Cabeçalho menor */
+.cabecalho {
+    padding: 10px 40px;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+.escudo {
+    height: 45px;
+    margin-right: 12px;
+}
+
+/* Saudação */
+.saudacao {
+    padding: 20px 40px 5px 40px;
+}
+
+.saudacao h1 {
+    font-size: 38px;
+}
+
+/* KPIs */
+.kpis {
+    padding: 0 30px;
+}
+
+.kpi {
+    padding: 15px 20px;
+    margin: 10px;
+    background-color: #1a1a1a;
+    border-top: 3px solid #e63946;
+}
+
+.kpi p {
+    font-size: 14px;
+}
+
+.kpi h2 {
+    font-size: 34px;
+    margin-top: 6px;
+}
+
+/* O KPI em destaque continua branco */
+.kpi-destaque {
+    background-color: #ffffff;
+}
+
+/* Gráficos */
+.graficos {
+    padding: 0 30px 15px 30px;
+}
+
+.grafico {
+    padding: 15px 20px;
+    margin: 10px;
+    background-color: #1a1a1a;
+    border-top: 3px solid #e63946;
+}
+
+.grafico h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Altura fixa da área do gráfico. Para aumentar ou diminuir, mude este número */
+.area-grafico {
+    height: 230px;
+}
+
+/* Rodapé: alinhado com o cabeçalho e com a mesma cor dele */
+.rodape {
+    padding: 15px 40px;
+    background-color: #050505;
+    border-top: 1px solid #333333;
+    color: #999999;
+    font-size: 14px;
+}
