@@ -1,11 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Nasci Corinthiano</title>
     <link rel="stylesheet" href="login.css">
 </head>
+
 <body class="pagina-login">
 
     <!-- CABEÇALHO -->
@@ -14,6 +17,7 @@
             <img src="img/corinthians.png" alt="Escudo do Corinthians" class="escudo">
             <span>Nasci Corinthiano</span>
         </div>
+
         <nav class="menu">
             <a href="index.html">Voltar para a Home</a>
         </nav>
@@ -22,9 +26,10 @@
     <main class="container-login">
         <div class="caixa-login">
 
-            <!-- Lado esquerdo: formulário (fundo branco) -->
+            <!-- Lado esquerdo: formulário -->
             <section class="lado-formulario">
                 <div class="conteudo-formulario">
+
                     <h1>Entre na sua conta</h1>
                     <p class="subtitulo-form">Faça login para agendar o seu tour.</p>
 
@@ -37,7 +42,9 @@
                     <div class="area-botao">
                         <button class="botao-preto" onclick="entrar()">ENTRAR</button>
                     </div>
+
                     <p id="mensagem_login" class="mensagem"></p>
+
                 </div>
             </section>
 
@@ -56,50 +63,62 @@
         Projeto acadêmico. Feito por um corinthiano de nascença.
     </footer>
 
-<script>
-    function entrar() {
-        var email = input_email.value;
-        var senha = input_senha.value;
+    <script>
+        function entrar() {
 
-        if (email == "" || senha == "") {
-            mensagem_login.innerHTML = "Preencha o e-mail e a senha.";
-        } else if (email.indexOf("@") == -1) {
-            mensagem_login.innerHTML = "Digite um e-mail válido.";
-        } else {
-            mensagem_login.innerHTML = "Entrando...";
+            let email = input_email.value;
+            let senha = input_senha.value;
 
-            fetch("/usuarios/autenticar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    emailServer: email,
-                    senhaServer: senha
+            if (email == "" || senha == "") {
+                mensagem_login.innerHTML = "Preencha o e-mail e a senha.";
+
+            } else if (email.indexOf("@") == -1) {
+                mensagem_login.innerHTML = "Digite um e-mail válido.";
+
+            } else {
+
+                mensagem_login.innerHTML = "Entrando...";
+
+                fetch("/usuarios/autenticar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        emailServer: email,
+                        senhaServer: senha
+                    })
                 })
-            })
-                .then(function (resposta) {
-                    if (resposta.ok) {
-                        resposta.json().then(function (json) {
-                            sessionStorage.ID_USUARIO = json.id;
-                            sessionStorage.NOME_USUARIO = json.nome;
-                            sessionStorage.EMAIL_USUARIO = json.email;
 
-                            setTimeout(function () {
-                                window.location = "dashboard.html";
-                            }, 1000);
-                        });
-                    } else {
-                        mensagem_login.innerHTML = "E-mail e/ou senha inválido(s).";
-                    }
-                })
-                .catch(function (erro) {
-                    console.log(erro);
-                    mensagem_login.innerHTML = "Erro ao conectar com o servidor.";
-                });
+                    .then(function (resposta) {
+
+                        if (resposta.ok) {
+
+                            resposta.json().then(function (json) {
+
+                                sessionStorage.ID_USUARIO = json.id;
+                                sessionStorage.NOME_USUARIO = json.nome;
+                                sessionStorage.EMAIL_USUARIO = json.email;
+
+                                setTimeout(function () {
+                                    window.location = "dashboard.html";
+                                }, 1000);
+
+                            });
+
+                        } else {
+                            mensagem_login.innerHTML = "E-mail e/ou senha inválido(s).";
+                        }
+
+                    })
+
+                    .catch(function (erro) {
+                        console.log(erro);
+                        mensagem_login.innerHTML = "Erro ao conectar com o servidor.";
+                    });
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
 </html>

@@ -1,11 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro | Nasci Corinthiano</title>
     <link rel="stylesheet" href="cadastro.css">
 </head>
+
 <body class="pagina-cadastro">
 
     <!-- CABEÇALHO -->
@@ -14,6 +17,7 @@
             <img src="img/corinthians.png" alt="Escudo do Corinthians" class="escudo">
             <span>Nasci Corinthiano</span>
         </div>
+
         <nav class="menu">
             <a href="index.html">Voltar para a Home</a>
         </nav>
@@ -32,6 +36,7 @@
             <!-- Lado direito: formulário -->
             <section class="lado-formulario">
                 <div class="conteudo-formulario">
+
                     <h1>Crie sua conta</h1>
                     <p class="subtitulo-form">Preencha os dados para entrar para a Fiel.</p>
 
@@ -64,6 +69,7 @@
                     </div>
 
                     <p id="mensagem_cadastro" class="mensagem"></p>
+
                 </div>
             </section>
 
@@ -75,56 +81,112 @@
         Projeto acadêmico. Feito por um corinthiano de nascença.
     </footer>
 
-<script>
-    function cadastrar() {
-        var nome = input_nome.value;
-        var email = input_email.value;
-        var senha = input_senha.value;
-        var confirmacao = input_confirmacao.value;
-        var heranca = select_heranca.value;
+    <script>
+        function cadastrar() {
 
-        if (nome == "" || email == "" || senha == "" || confirmacao == "" || heranca == "") {
-            mensagem_cadastro.innerHTML = "Preencha todos os campos.";
-        } else if (nome.length < 3) {
-            mensagem_cadastro.innerHTML = "O nome precisa ter pelo menos 3 letras.";
-        } else if (email.indexOf("@") == -1) {
-            mensagem_cadastro.innerHTML = "Digite um e-mail válido.";
-        } else if (senha.length < 6) {
-            mensagem_cadastro.innerHTML = "A senha precisa ter pelo menos 6 caracteres.";
-        } else if (senha != confirmacao) {
-            mensagem_cadastro.innerHTML = "As senhas não são iguais.";
-        } else {
-            mensagem_cadastro.innerHTML = "Cadastrando...";
+            let nome = input_nome.value;
+            let email = input_email.value;
+            let senha = input_senha.value;
+            let confirmacao = input_confirmacao.value;
+            let heranca = select_heranca.value;
 
-            fetch("/usuarios/cadastrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    nomeServer: nome,
-                    emailServer: email,
-                    senhaServer: senha,
-                    herancaServer: heranca
+            let maiuscula = false;
+            let minuscula = false;
+            let numero = false;
+            let especial = false;
+
+            for (let i = 0; i < senha.length; i++) {
+
+                if (senha[i] >= "A" && senha[i] <= "Z") {
+                    maiuscula = true;
+
+                } else if (senha[i] >= "a" && senha[i] <= "z") {
+                    minuscula = true;
+
+                } else if (senha[i] >= "0" && senha[i] <= "9") {
+                    numero = true;
+
+                } else {
+                    especial = true;
+                }
+            }
+
+            let mensagem = "";
+
+            if (maiuscula == false) {
+                mensagem += "• Pelo menos uma letra maiúscula.<br>";
+            }
+
+            if (minuscula == false) {
+                mensagem += "• Pelo menos uma letra minúscula.<br>";
+            }
+
+            if (numero == false) {
+                mensagem += "• Pelo menos um número.<br>";
+            }
+
+            if (especial == false) {
+                mensagem += "• Pelo menos um caractere especial.<br>";
+            }
+
+            if (nome == "" || email == "" || senha == "" || confirmacao == "" || heranca == "") {
+                mensagem_cadastro.innerHTML = "Preencha todos os campos.";
+
+            } else if (nome.length < 3) {
+                mensagem_cadastro.innerHTML = "O nome precisa ter pelo menos 3 letras.";
+
+            } else if (email.indexOf("@") == -1) {
+                mensagem_cadastro.innerHTML = "Digite um e-mail válido.";
+
+            } else if (senha.length < 6) {
+                mensagem_cadastro.innerHTML = "A senha precisa ter pelo menos 6 caracteres.";
+
+            } else if (mensagem != "") {
+                mensagem_cadastro.innerHTML = "A senha precisa conter:<br>" + mensagem;
+
+            } else if (senha != confirmacao) {
+                mensagem_cadastro.innerHTML = "As senhas não são iguais.";
+
+            } else {
+
+                mensagem_cadastro.innerHTML = "Cadastrando...";
+
+                fetch("/usuarios/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        nomeServer: nome,
+                        emailServer: email,
+                        senhaServer: senha,
+                        herancaServer: heranca
+                    })
                 })
-            })
-                .then(function (resposta) {
-                    if (resposta.ok) {
-                        mensagem_cadastro.innerHTML = "Cadastro realizado! Redirecionando para o login...";
-                        setTimeout(function () {
-                            window.location = "login.html";
-                        }, 2000);
-                    } else {
-                        mensagem_cadastro.innerHTML = "Não foi possível cadastrar. Esse e-mail já pode estar em uso.";
-                    }
-                })
-                .catch(function (erro) {
-                    console.log(erro);
-                    mensagem_cadastro.innerHTML = "Erro ao conectar com o servidor.";
-                });
+
+                    .then(function (resposta) {
+
+                        if (resposta.ok) {
+
+                            mensagem_cadastro.innerHTML = "Cadastro realizado! Redirecionando para o login...";
+
+                            setTimeout(function () {
+                                window.location = "login.html";
+                            }, 2000);
+
+                        } else {
+                            mensagem_cadastro.innerHTML = "Não foi possível cadastrar. Esse e-mail já pode estar em uso.";
+                        }
+
+                    })
+
+                    .catch(function (erro) {
+                        console.log(erro);
+                        mensagem_cadastro.innerHTML = "Erro ao conectar com o servidor.";
+                    });
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
 </html>
