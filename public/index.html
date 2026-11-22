@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nasci Corinthiano</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="pagina-home">
 
     <!-- CABEÇALHO -->
@@ -30,7 +32,8 @@
         <section class="container-principal">
             <div class="container-escuro">
                 <h1>Nasci<br>corinthiano.</h1>
-                <p>A história de quem recebeu o Corinthians de herança, do tio-avô, e descobriu que ele já estava dentro do coração desde o primeiro dia.</p>
+                <p>A história de quem recebeu o Corinthians de herança, do tio-avô, e descobriu que ele já estava dentro
+                    do coração desde o primeiro dia.</p>
                 <a href="#historia" class="botao">Conheça minha história</a>
                 <a href="login.html" class="botao-vazio">Agende seu tour</a>
             </div>
@@ -48,23 +51,31 @@
             <div class="container-cards">
                 <div class="card">
                     <h3>Antes de nascer</h3>
-                    <p>Minha família sempre foi muito ligada ao futebol. Antes de eu nascer, o esporte já fazia parte da nossa casa.</p>
+                    <p>Minha família sempre foi muito ligada ao futebol. Antes de eu nascer, o esporte já fazia parte da
+                        nossa casa.</p>
+                    <div class="foto"><img src="img/foto-antes-de-nascer.jpeg" alt=""></div>
                 </div>
 
                 <div class="card">
                     <h3>Meu tio-avô</h3>
-                    <p>Uma pessoa muito importante para mim. Desde pequeno, foi ele quem me incentivou a ser corinthiano.</p>
+                    <p>Uma pessoa muito importante para mim. Desde pequeno, foi ele quem me incentivou a ser
+                        corinthiano.</p>
                     <div class="foto"><img src="img/foto-com-tio-odair.jpeg" alt=""></div>
                 </div>
 
                 <div class="card">
                     <h3>Nasci corinthiano</h3>
-                    <p>Eu brinco que, mesmo sem o incentivo dele, eu seria corinthiano do mesmo jeito. O Corinthians nasceu dentro de mim no primeiro dia da minha vida.</p>
+                    <p>Eu brinco que, mesmo sem o incentivo dele, eu seria corinthiano do mesmo jeito. O Corinthians
+                        nasceu dentro de mim no primeiro dia da minha vida.</p>
+
+                    <div class="foto">
+                        <img src="img/foto-corinthians.jpeg" alt="">
+                    </div>
                 </div>
             </div>
 
             <div class="container-contador">
-                <h3>Há 19 anos sou corinthiano.</h3>
+                <h3>Há 20 anos sou corinthiano.</h3>
                 <p>Desde o primeiro dia da minha vida.</p>
             </div>
         </section>
@@ -76,12 +87,15 @@
             <div class="container-cards">
                 <div class="card">
                     <h3>1910, Bom Retiro</h3>
-                    <p>O Corinthians nasceu em 1910, no bairro do Bom Retiro, em São Paulo, criado por trabalhadores. Desde o começo, foi o clube de quem não tinha voz.</p>
+                    <p>O Corinthians nasceu em 1910, no bairro do Bom Retiro, em São Paulo, criado por trabalhadores.
+                        Desde o começo, foi o clube de quem não tinha voz.</p>
                 </div>
 
                 <div class="card">
                     <h3>Democracia Corinthiana</h3>
-                    <p>Jogadores como Sócrates, Casagrande, Wladimir e Zenon criaram um movimento em que as decisões do clube eram votadas por todos, do presidente ao roupeiro, em plena ditadura militar. Futebol também é cidadania.</p>
+                    <p>Jogadores como Sócrates, Casagrande, Wladimir e Zenon criaram um movimento em que as decisões do
+                        clube eram votadas por todos, do presidente ao roupeiro, em plena ditadura militar. Futebol
+                        também é cidadania.</p>
                 </div>
             </div>
         </section>
@@ -128,7 +142,9 @@
                         <img src="img/estrutura-parque-sao-jorge.jpg" alt="Estrutura do Parque São Jorge">
                     </div>
 
-                    <p>Conhecido como a casa do Corinthians, o Parque São Jorge é a sede social do clube e um dos lugares mais importantes da sua história. É um espaço que representa as tradições, as conquistas e a trajetória do Timão ao longo dos anos.</p>
+                    <p>Conhecido como a casa do Corinthians, o Parque São Jorge é a sede social do clube e um dos
+                        lugares mais importantes da sua história. É um espaço que representa as tradições, as conquistas
+                        e a trajetória do Timão ao longo dos anos.</p>
                 </div>
 
                 <!-- NEO QUÍMICA ARENA -->
@@ -140,7 +156,9 @@
                         <img src="img/estrutura-neo-quimica.webp" alt="Interior da Neo Química Arena">
                     </div>
 
-                    <p>Localizada em Itaquera, a Neo Química Arena é a casa da Fiel nos jogos do Corinthians. Inaugurada em 2014, tornou-se um dos principais símbolos do clube e um lugar especial para os torcedores viverem grandes emoções.</p>
+                    <p>Localizada em Itaquera, a Neo Química Arena é a casa da Fiel nos jogos do Corinthians. Inaugurada
+                        em 2014, tornou-se um dos principais símbolos do clube e um lugar especial para os torcedores
+                        viverem grandes emoções.</p>
                 </div>
 
             </div>
@@ -172,43 +190,44 @@
         Projeto acadêmico. Feito por um corinthiano de nascença.
     </footer>
 
-<script>
+    <script>
 
-    function enviarTour() {
-        var tour = select_tour.value;
-        var idUsuario = sessionStorage.ID_USUARIO;
+        function enviarTour() {
+            var tour = select_tour.value;
+            var idUsuario = sessionStorage.ID_USUARIO;
 
-        if (tour == "") {
-            mensagem_tour.innerHTML = "Escolha uma opção.";
-        } else if (idUsuario == undefined) {
-            mensagem_tour.innerHTML = "Faça login para enviar sua resposta.";
-        } else {
-            fetch("/usuarios/tour", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    idUsuarioServer: idUsuario,
-                    tourServer: tour
+            if (tour == "") {
+                mensagem_tour.innerHTML = "Escolha uma opção.";
+            } else if (idUsuario == undefined) {
+                mensagem_tour.innerHTML = "Faça login para enviar sua resposta.";
+            } else {
+                fetch("/usuarios/tour", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        idUsuarioServer: idUsuario,
+                        tourServer: tour
+                    })
                 })
-            })
-                .then(function (resposta) {
-                    if (resposta.ok) {
-                        mensagem_tour.innerHTML = "Resposta enviada! Indo para a dashboard...";
-                        setTimeout(function () {
-                            window.location = "dashboard.html";
-                        }, 1500);
-                    } else {
-                        mensagem_tour.innerHTML = "Não foi possível enviar sua resposta.";
-                    }
-                })
-                .catch(function (erro) {
-                    console.log(erro);
-                    mensagem_tour.innerHTML = "Erro ao conectar com o servidor.";
-                });
+                    .then(function (resposta) {
+                        if (resposta.ok) {
+                            mensagem_tour.innerHTML = "Resposta enviada! Indo para a dashboard...";
+                            setTimeout(function () {
+                                window.location = "dashboard.html";
+                            }, 1500);
+                        } else {
+                            mensagem_tour.innerHTML = "Não foi possível enviar sua resposta.";
+                        }
+                    })
+                    .catch(function (erro) {
+                        console.log(erro);
+                        mensagem_tour.innerHTML = "Erro ao conectar com o servidor.";
+                    });
+            }
         }
-    }
 
-</script>
+    </script>
 
 </body>
+
 </html>
