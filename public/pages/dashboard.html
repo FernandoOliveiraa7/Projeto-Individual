@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Nasci Corinthiano</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
     <!-- Chart.js por CDN. Se o projeto em grupo usa a pasta local, troque pelo mesmo caminho -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -14,11 +14,11 @@
     <!-- CABEÇALHO -->
     <header class="cabecalho">
         <div class="logo">
-            <img src="img/corinthians.png" alt="Escudo do Corinthians" class="escudo">
+            <img src="/img/corinthians.png" alt="Escudo do Corinthians" class="escudo">
             <span>Nasci Corinthiano</span>
         </div>
         <nav class="menu">
-            <a href="index.html">Home</a>
+            <a href="/index.html">Home</a>
             <a href="#" class="botao" onclick="sair()">Sair</a>
         </nav>
     </header>
@@ -81,14 +81,14 @@
 
     // ===== SESSÃO (ajuste os nomes conforme o seu login) =====
     if (sessionStorage.ID_USUARIO == undefined) {
-        window.location = "login.html";
+        window.location = "/pages/login.html";
     }
 
     nome_usuario.innerHTML = sessionStorage.NOME_USUARIO || "Fiel";
 
     function sair() {
         sessionStorage.clear();
-        window.location = "index.html";
+        window.location = "/index.html";
     }
 
     // ===== DADOS DE EXEMPLO =====

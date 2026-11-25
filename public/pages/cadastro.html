@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -6,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro | Nasci Corinthiano</title>
-    <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="/css/cadastro.css">
 </head>
 
 <body class="pagina-cadastro">
@@ -14,12 +13,12 @@
     <!-- CABEÇALHO -->
     <header class="cabecalho">
         <div class="logo">
-            <img src="img/corinthians.png" alt="Escudo do Corinthians" class="escudo">
+            <img src="/img/corinthians.png" alt="Escudo do Corinthians" class="escudo">
             <span>Nasci Corinthiano</span>
         </div>
 
         <nav class="menu">
-            <a href="index.html">Voltar para a Home</a>
+            <a href="/index.html">Voltar para a Home</a>
         </nav>
     </header>
 
@@ -30,7 +29,7 @@
             <section class="lado-painel">
                 <h2>Já é da Fiel?</h2>
                 <p>Entre com o seu e-mail e a sua senha para agendar o seu tour.</p>
-                <a href="login.html" class="botao-contorno">ENTRAR</a>
+                <a href="/pages/login.html" class="botao-contorno">ENTRAR</a>
             </section>
 
             <!-- Lado direito: formulário -->
@@ -171,7 +170,7 @@
                             mensagem_cadastro.innerHTML = "Cadastro realizado! Redirecionando para o login...";
 
                             setTimeout(function () {
-                                window.location = "login.html";
+                                window.location = "/pages/login.html";
                             }, 2000);
 
                         } else {

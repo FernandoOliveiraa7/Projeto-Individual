@@ -13,7 +13,7 @@ body {
 
 /* FOTO DA HOME */
 .pagina-home {
-    background-image: url("img/torcida.jpg");
+    background-image: url("/img/torcida.jpg");
     background-size: cover;
     background-position: center top;
     background-attachment: fixed;
@@ -336,68 +336,4 @@ label {
 .grafico h3 {
     font-size: 24px;
     margin-bottom: 20px;
-}
-
-/* ===== RESPONSIVIDADE ===== */
-@media (max-width: 800px) {
-    .cabecalho {
-        flex-direction: column;
-        padding: 20px;
-    }
-
-    .menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 20px;
-    }
-
-    .menu a {
-        margin-left: 0;
-    }
-
-    .container-escuro {
-        padding: 100px 30px;
-    }
-
-    .container-principal h1 {
-        font-size: 60px;
-    }
-
-    .container-principal p {
-        width: 100%;
-    }
-
-    .secao {
-        padding: 50px 25px;
-    }
-
-    .subtitulo {
-        font-size: 36px;
-    }
-
-    .container-cards,
-    .container-locais,
-    .graficos,
-    .kpis {
-        flex-direction: column;
-    }
-
-    .container-contador {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .container-pesquisa {
-        width: 100%;
-    }
-
-    .area-fotos img {
-        height: 160px;
-    }
-
-    .container-frase {
-        font-size: 30px;
-    }
 }
