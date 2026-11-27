@@ -30,6 +30,23 @@
             <h1>Fala, <span id="nome_usuario">Fiel</span>!</h1>
         </section>
 
+        <!-- ESCOLHA DO TOUR -->
+        <section class="escolha-tour">
+            <div class="caixa-tour">
+                <h3>Onde você prefere fazer o tour?</h3>
+
+                <select id="select_tour" class="campo">
+                    <option value="">Escolha uma opção</option>
+                    <option value="Parque São Jorge">Parque São Jorge</option>
+                    <option value="Neo Química Arena">Neo Química Arena</option>
+                </select>
+
+                <button class="botao" onclick="enviarTour()">Enviar minha resposta</button>
+
+                <p id="mensagem_tour" class="mensagem"></p>
+            </div>
+        </section>
+
         <!-- KPIs -->
         <section class="kpis">
             <div class="kpi">
@@ -69,7 +86,41 @@
 
     <!-- RODAPÉ -->
     <footer class="rodape">
-        Projeto acadêmico. Feito por um corinthiano de nascença.
+        <div class="rodape-topo">
+
+            <div class="rodape-info">
+                <div class="rodape-logo">
+                    <img src="/img/corinthians.png" alt="Escudo do Corinthians" class="rodape-escudo">
+                    <span>Nasci Corinthiano</span>
+                </div>
+
+                <p>O corinthiano de verdade já nasce corinthiano.</p>
+
+                <a href="mailto:SEU_EMAIL@email.com" class="rodape-email">SEU_EMAIL@email.com</a>
+            </div>
+
+            <div class="rodape-colunas">
+                <div class="rodape-coluna">
+                    <h3>NAVEGAÇÃO</h3>
+                    <a href="/index.html">Home</a>
+                    <a href="/index.html#historia">Minha história</a>
+                    <a href="/pages/login.html">Login</a>
+                    <a href="/pages/dashboard.html">Dashboard</a>
+                </div>
+
+                <div class="rodape-coluna">
+                    <h3>INSTITUCIONAL</h3>
+                    <a href="LINK_DO_SEU_GITHUB">GitHub do projeto</a>
+                    <a href="/index.html#povo">O time do povo</a>
+                    <a href="/index.html#tour">Os locais do tour</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="rodape-base">
+            <span>© 2026 Nasci Corinthiano</span>
+        </div>
     </footer>
 
 <script>
@@ -108,6 +159,40 @@
             { nome: "Neo Química Arena", total: 18 }
         ]
     };
+
+    // ===== ENVIAR O TOUR ESCOLHIDO =====
+    function enviarTour() {
+        let tour = select_tour.value;
+        let idUsuario = sessionStorage.ID_USUARIO;
+
+        if (tour == "") {
+            mensagem_tour.innerHTML = "Escolha uma opção.";
+        } else {
+            fetch("/usuarios/tour", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    idUsuarioServer: idUsuario,
+                    tourServer: tour
+                })
+            })
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        mensagem_tour.innerHTML = "Resposta enviada!";
+                        // recarrega a página para os números e gráficos atualizarem
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1000);
+                    } else {
+                        mensagem_tour.innerHTML = "Não foi possível enviar sua resposta.";
+                    }
+                })
+                .catch(function (erro) {
+                    console.log(erro);
+                    mensagem_tour.innerHTML = "Erro ao conectar com o servidor.";
+                });
+        }
+    }
 
     // ===== BUSCAR DADOS =====
     function carregarDashboard() {

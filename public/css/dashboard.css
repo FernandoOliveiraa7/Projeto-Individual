@@ -36,6 +36,40 @@ main {
     font-size: 38px;
 }
 
+/* Escolha do tour */
+.escolha-tour {
+    padding: 0 30px;
+}
+
+.caixa-tour {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 15px 20px;
+    background-color: #1a1a1a;
+    border-top: 3px solid #e63946;
+}
+
+.caixa-tour h3 {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.caixa-tour .campo {
+    width: 260px;
+    margin-top: 0;
+    margin-right: 15px;
+}
+
+.caixa-tour .botao {
+    padding: 12px 24px;
+}
+
+.caixa-tour .mensagem {
+    margin: 0 0 0 20px;
+    font-size: 16px;
+}
+
 /* KPIs */
 .kpis {
     padding: 0 30px;
@@ -82,13 +116,4 @@ main {
 /* Altura fixa da área do gráfico. Para aumentar ou diminuir, mude este número */
 .area-grafico {
     height: 230px;
-}
-
-/* Rodapé: alinhado com o cabeçalho e com a mesma cor dele */
-.rodape {
-    padding: 15px 40px;
-    background-color: #050505;
-    border-top: 1px solid #333333;
-    color: #999999;
-    font-size: 14px;
 }

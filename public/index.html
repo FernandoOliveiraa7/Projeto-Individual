@@ -18,7 +18,6 @@
         </div>
         <nav class="menu">
             <a href="#historia">Minha história</a>
-            <a href="#pesquisa">Pesquisa</a>
             <a href="#povo">O time do povo</a>
             <a href="#valores">Valores</a>
             <a href="#tour">Tour</a>
@@ -164,69 +163,46 @@
             </div>
         </section>
 
-        <!-- PESQUISA SOBRE O TOUR -->
-        <section class="secao" id="pesquisa">
-            <h2 class="subtitulo">E você? Qual lugar gostaria de conhecer?</h2>
-
-            <div class="container-pesquisa">
-                <label for="select_tour">Onde você prefere fazer um tour pelo Corinthians?</label>
-
-                <select id="select_tour" class="campo">
-                    <option value="">Escolha uma opção</option>
-                    <option value="Parque São Jorge">Parque São Jorge</option>
-                    <option value="Neo Química Arena">Neo Química Arena</option>
-                </select>
-
-                <button class="botao botao-largo" onclick="enviarTour()">Enviar minha resposta</button>
-
-                <p id="mensagem_tour" class="mensagem"></p>
-            </div>
-        </section>
-
     </main>
 
     <!-- RODAPÉ -->
     <footer class="rodape">
-        Projeto acadêmico. Feito por um corinthiano de nascença.
+        <div class="rodape-topo">
+
+            <div class="rodape-info">
+                <div class="rodape-logo">
+                    <img src="/img/corinthians.png" alt="Escudo do Corinthians" class="rodape-escudo">
+                    <span>Nasci Corinthiano</span>
+                </div>
+
+                <p>O corinthiano de verdade já nasce corinthiano.</p>
+
+                <a href="mailto:SEU_EMAIL@email.com" class="rodape-email">SEU_EMAIL@email.com</a>
+            </div>
+
+            <div class="rodape-colunas">
+                <div class="rodape-coluna">
+                    <h3>NAVEGAÇÃO</h3>
+                    <a href="/index.html">Home</a>
+                    <a href="/index.html#historia">Minha história</a>
+                    <a href="/pages/login.html">Login</a>
+                    <a href="/pages/dashboard.html">Dashboard</a>
+                </div>
+
+                <div class="rodape-coluna">
+                    <h3>INSTITUCIONAL</h3>
+                    <a href="LINK_DO_SEU_GITHUB">GitHub do projeto</a>
+                    <a href="/index.html#povo">O time do povo</a>
+                    <a href="/index.html#tour">Os locais do tour</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="rodape-base">
+            <span>© 2026 Nasci Corinthiano</span>
+        </div>
     </footer>
-
-    <script>
-
-        function enviarTour() {
-            var tour = select_tour.value;
-            var idUsuario = sessionStorage.ID_USUARIO;
-
-            if (tour == "") {
-                mensagem_tour.innerHTML = "Escolha uma opção.";
-            } else if (idUsuario == undefined) {
-                mensagem_tour.innerHTML = "Faça login para enviar sua resposta.";
-            } else {
-                fetch("/usuarios/tour", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        idUsuarioServer: idUsuario,
-                        tourServer: tour
-                    })
-                })
-                    .then(function (resposta) {
-                        if (resposta.ok) {
-                            mensagem_tour.innerHTML = "Resposta enviada! Indo para a dashboard...";
-                            setTimeout(function () {
-                                window.location = "/pages/dashboard.html";
-                            }, 1500);
-                        } else {
-                            mensagem_tour.innerHTML = "Não foi possível enviar sua resposta.";
-                        }
-                    })
-                    .catch(function (erro) {
-                        console.log(erro);
-                        mensagem_tour.innerHTML = "Erro ao conectar com o servidor.";
-                    });
-            }
-        }
-
-    </script>
 
 </body>
 
