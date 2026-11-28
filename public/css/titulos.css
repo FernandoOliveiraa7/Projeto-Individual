@@ -1,0 +1,79 @@
+/* ===== PÁGINA DE TÍTULOS ===== */
+.titulos-topo {
+    padding: 70px 60px 30px 60px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.titulos-topo h1 {
+    font-size: 80px;
+}
+
+.titulos-topo p {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.titulos-corpo {
+    padding: 30px 60px 80px 60px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.grupo-titulo {
+    font-size: 36px;
+    margin: 30px 10px 15px 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #555555;
+}
+
+.cards-titulos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-titulo {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    padding: 25px;
+    border: 1px solid #555555;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+}
+
+.card-titulo:hover {
+    border-color: #ffffff;
+}
+
+/* caixa da foto da taça */
+.taca-foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 220px;
+    margin-bottom: 15px;
+}
+
+.taca-foto img {
+    height: 200px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.taca-numero {
+    font-family: Impact, sans-serif;
+    font-size: 70px;
+    line-height: 1;
+    color: #ffffff;
+}
+
+.taca-nome {
+    margin: 6px 0 0 0;
+    font-size: 20px;
+    color: #cccccc;
+}
+
+.taca-anos {
+    margin: 8px 0 0 0;
+    font-size: 13px;
+    color: #999999;
+}

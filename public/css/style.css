@@ -236,6 +236,34 @@ p {
     object-fit: cover;
 }
 
+/* ===== CHAMADA PARA ESCOLHER O TOUR ===== */
+.chamada-tour {
+    margin-top: 40px;
+    padding: 30px;
+    border: 1px solid #ffffff;
+    text-align: center;
+}
+
+.chamada-tour h3 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.chamada-tour p {
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+}
+
+.chamada-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.chamada-botoes .botao-vazio {
+    margin-left: 0;
+}
+
 /* ===== CAMPO E MENSAGEM (usados na escolha do tour da dashboard) ===== */
 .campo {
     display: block;
